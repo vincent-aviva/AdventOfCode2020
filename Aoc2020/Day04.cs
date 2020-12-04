@@ -126,13 +126,13 @@ namespace Aoc2020
                                 );
                         break;
                     case "hcl": //(Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-                        valid = Regex.IsMatch(value, "\\#[0-9a-f]{6}");
+                        valid = Regex.IsMatch(value, "^#[0-9a-f]{6}$");
                         break;
                     case "ecl": //(Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
                         valid = AllowedEyeColors.Contains(value);
                         break;
                     case "pid": //(Passport ID) - a nine-digit number, including leading zeroes.
-                        valid = Regex.IsMatch(value, "[0-9]{9}");
+                        valid = Regex.IsMatch(value, "^[0-9]{9}$");
                         break;
                     default:
                         break;
