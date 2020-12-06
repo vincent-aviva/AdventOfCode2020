@@ -9,7 +9,7 @@ namespace Aoc2020
     {
         public bool IsImplemented => true;
         public bool IsPart1Complete => true;
-        public bool IsPart2Complete => false;
+        public bool IsPart2Complete => true;
 
         public int Solve1(IList<string> input)
         {
