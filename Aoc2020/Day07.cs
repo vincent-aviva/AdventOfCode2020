@@ -8,7 +8,7 @@ namespace Aoc2020
     {
         public bool IsImplemented => true;
         public bool IsPart1Complete => true;
-        public bool IsPart2Complete => false;
+        public bool IsPart2Complete => true;
 
         private Dictionary<string, List<ContainingBag>> bagCombinations;
 
@@ -21,7 +21,7 @@ namespace Aoc2020
         public int Solve2(IList<string> input)
         {
             bagCombinations = RenderBags(input);
-            return 0;
+            return GetContainingBagCount("shiny gold");
         }
 
         private Dictionary<string, List<ContainingBag>> RenderBags(IList<string> input)
@@ -70,6 +70,19 @@ namespace Aoc2020
             }
 
             return colorPossibilities;
+        }
+
+        private int GetContainingBagCount(string color)
+        {
+            int bagCount = 0;
+            var bag = bagCombinations.First(x => x.Key == color);
+            foreach (var containingBag in bag.Value)
+            {
+                bagCount += containingBag.Amount;
+                bagCount += containingBag.Amount * GetContainingBagCount(containingBag.Color);
+            }
+
+            return bagCount;
         }
     }
 
