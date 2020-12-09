@@ -9,12 +9,12 @@ namespace Aoc2020
         public bool IsPart1Complete => true;
         public bool IsPart2Complete => true;
 
-        public int Solve1(IList<string> input)
+        public long Solve1(IList<string> input)
         {
             return FindTrees(input, 3, 1);
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve2(IList<string> input)
         {
             var slopes = new List<(int right, int down)>
             {

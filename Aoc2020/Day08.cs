@@ -8,9 +8,9 @@ namespace Aoc2020
     {
         public bool IsImplemented => true;
         public bool IsPart1Complete => true;
-        public bool IsPart2Complete => false;
+        public bool IsPart2Complete => true;
 
-        public int Solve1(IList<string> input)
+        public long Solve1(IList<string> input)
         {
             var commands = input.Select(x => HandheldGameConsole.ParseCommand(x)).ToList();
 
@@ -20,7 +20,7 @@ namespace Aoc2020
             return handheld.Accumulator;
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve2(IList<string> input)
         {
             var commands = input.Select(x => HandheldGameConsole.ParseCommand(x)).ToList();
 

@@ -10,13 +10,13 @@ namespace Aoc2020
         public bool IsPart1Complete => true;
         public bool IsPart2Complete => true;
 
-        public int Solve1(IList<string> input)
+        public long Solve1(IList<string> input)
         {
             var boardingPasses = input.Select(x => new BoardingPass(x)).ToList();
             return boardingPasses.Max(x => x.SeatId);
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve2(IList<string> input)
         {
             var boardingPasses = input.Select(x => new BoardingPass(x)).ToList();
             boardingPasses = boardingPasses.OrderBy(x => x.Row).ThenBy(x => x.Seat).ToList();

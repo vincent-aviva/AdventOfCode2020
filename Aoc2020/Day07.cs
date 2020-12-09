@@ -12,13 +12,13 @@ namespace Aoc2020
 
         private Dictionary<string, List<ContainingBag>> bagCombinations;
 
-        public int Solve1(IList<string> input)
+        public long Solve1(IList<string> input)
         {
             bagCombinations = RenderBags(input);
             return FindColorPossibilities("shiny gold", new List<string>()).Distinct().Count();
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve2(IList<string> input)
         {
             bagCombinations = RenderBags(input);
             return GetContainingBagCount("shiny gold");

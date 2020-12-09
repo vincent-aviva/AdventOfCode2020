@@ -10,14 +10,14 @@ namespace Aoc2020
         public bool IsPart1Complete => true;
         public bool IsPart2Complete => true;
 
-        public int Solve1(IList<string> input)
+        public long Solve1(IList<string> input)
         {
             var groupAnswers = ParseGroups(input);
 
             return groupAnswers.Sum(x => x.AnyoneAnswered);
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve2(IList<string> input)
         {
             var groupAnswers = ParseGroups(input);
 

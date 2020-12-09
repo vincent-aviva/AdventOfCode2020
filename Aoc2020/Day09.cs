@@ -1,20 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Aoc2020
 {
     public class Day09 : IDay
     {
-        public bool IsImplemented => false;
-        public bool IsPart1Complete => false;
+        private readonly int _preamble;
+        public bool IsImplemented => true;
+        public bool IsPart1Complete => true;
         public bool IsPart2Complete => false;
 
-        public int Solve1(IList<string> input)
+        public Day09(int preamble = 25)
         {
-            throw new NotImplementedException();
+            _preamble = preamble;
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve1(IList<string> input)
+        {
+            var numbers = input.Select(long.Parse).ToList();
+
+            for (var i = _preamble; i < input.Count; i++)
+            {
+                var currentNumber = numbers[i];
+                var previousNumbers = numbers.Skip(i - _preamble).Take(_preamble).ToList();
+                var valid = previousNumbers.Any(x => previousNumbers.Where(y=> y != x).Any(y => x + y == currentNumber));
+
+                if (!valid)
+                {
+                    return currentNumber;
+                }
+            }
+
+            return 0;
+        }
+
+        public long Solve2(IList<string> input)
         {
             throw new NotImplementedException();
         }

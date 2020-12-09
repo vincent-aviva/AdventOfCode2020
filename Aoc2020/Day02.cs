@@ -11,7 +11,7 @@ namespace Aoc2020
         public bool IsPart1Complete => true;
         public bool IsPart2Complete => true;
 
-        public int Solve1(IList<string> input)
+        public long Solve1(IList<string> input)
         {
             var passwords = input.Select(x => new Day2PasswordPolicy(x)).ToList();
             var correct = passwords.Count(x => x.FirstValidateAttempt);
@@ -19,7 +19,7 @@ namespace Aoc2020
             return correct;
         }
 
-        public int Solve2(IList<string> input)
+        public long Solve2(IList<string> input)
         {
             var passwords = input.Select(x => new Day2PasswordPolicy(x)).ToList();
             var correct = passwords.Count(x => x.SecondValidateAttempt);

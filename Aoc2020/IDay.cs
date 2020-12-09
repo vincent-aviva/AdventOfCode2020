@@ -10,8 +10,8 @@ namespace Aoc2020
 
         bool IsPart2Complete { get; }
 
-        int Solve1(IList<string> input);
+        long Solve1(IList<string> input);
 
-        int Solve2(IList<string> input);
+        long Solve2(IList<string> input);
     }
 }
