@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Aoc2020
@@ -37,7 +36,29 @@ namespace Aoc2020
 
         public long Solve2(IList<string> input)
         {
-            throw new NotImplementedException();
+            var target = Solve1(input);
+
+            var numbers = input.Select(long.Parse).ToList();
+            
+            for (var i = 0; i < numbers.Count; i++)
+            {
+                var numberCounter = 1;
+                long sum = 0;
+                while (sum < target)
+                {
+                    var range = numbers.Skip(i).Take(numberCounter).ToList();
+                    sum = range.Sum();
+
+                    if (sum == target)
+                    {
+                        return range.Min() + range.Max();
+                    }
+
+                    numberCounter++;
+                }
+            }
+
+            return 0;
         }
     }
 }
