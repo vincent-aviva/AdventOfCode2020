@@ -7,8 +7,8 @@ namespace Aoc2020
     public class Day10 : IDay
     {
         public bool IsImplemented => true;
-        public bool IsPart1Complete => false;
-        public bool IsPart2Complete => false;
+        public bool IsPart1Complete => true;
+        public bool IsPart2Complete => true;
 
         public long Solve1(IList<string> input)
         {
@@ -25,7 +25,30 @@ namespace Aoc2020
 
         public long Solve2(IList<string> input)
         {
-            throw new NotImplementedException();
+            //Copy of https://github.com/FrankBakkerNl/AdventOfCode2020/blob/master/AdventOfCode2020/Puzzles/Day10.cs
+            var inputSet = input.Select(int.Parse).Append(0).ToHashSet();
+
+            var pathCounts = new long[input.Count * 3 + 4];
+            pathCounts[0] = 1;
+
+            var skipped = 0;
+
+            for (var i = 0;;i++)
+            {
+                if (!inputSet.Contains(i))
+                {
+                    if (++skipped == 3)
+                        return pathCounts[i - skipped]; // If we skipped 3 times in a row we are passed the end
+                    continue;
+                }
+
+                var paths = pathCounts[i];
+                pathCounts[i + 1] += paths;
+                pathCounts[i + 2] += paths;
+                pathCounts[i + 3] += paths;
+
+                skipped = 0;
+            }
         }
     }
 }

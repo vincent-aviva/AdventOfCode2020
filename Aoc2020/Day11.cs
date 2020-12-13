@@ -8,14 +8,14 @@ namespace Aoc2020
     {
         public bool IsImplemented => true;
         public bool IsPart1Complete => true;
-        public bool IsPart2Complete => false;
+        public bool IsPart2Complete => true;
 
         private List<string> WaitingArea { get; set; }
 
         private int OccupiedWaitingRoom => WaitingArea.Sum(x => x.Count(y => y == OccupiedSeat));
 
-        private int WaitingRoomMaxX = 0;
-        private int WaitingRoomMaxY = 0;
+        private int WaitingRoomMaxX;
+        private int WaitingRoomMaxY;
 
         private const char Floor = '.';
         private const char EmptySeat = 'L';
@@ -34,8 +34,8 @@ namespace Aoc2020
         private long Solve(List<string> input, Func<int, int, int> CountSeatsAround, int clearAround)
         {
             WaitingArea = input.ToList();
-            WaitingRoomMaxX = WaitingArea.First().Length - 1;
             WaitingRoomMaxY = WaitingArea.Count - 1;
+            WaitingRoomMaxX = WaitingArea.First().Length - 1;
 
             var occupied = -1;
 
@@ -66,6 +66,7 @@ namespace Aoc2020
                 }
 
                 WaitingArea = copy.Select(x => string.Join("", x)).ToList();
+                var output = string.Join(Environment.NewLine, WaitingArea);
             }
 
             return OccupiedWaitingRoom;
@@ -128,7 +129,7 @@ namespace Aoc2020
 
             var tile = WaitingArea[y][x];
             return tile == Floor ? 
-                GetFirstSeat(y - yChange, x - xChange, yChange, xChange) : 
+                GetFirstSeat(y + yChange, x + xChange, yChange, xChange) : 
                 tile;
         }
     }
