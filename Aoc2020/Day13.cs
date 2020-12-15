@@ -8,7 +8,7 @@ namespace Aoc2020
     {
         public bool IsImplemented => true;
         public bool IsPart1Complete => true;
-        public bool IsPart2Complete => false;
+        public bool IsPart2Complete => true;
 
         private long Part2StartPosition = 0;
 
