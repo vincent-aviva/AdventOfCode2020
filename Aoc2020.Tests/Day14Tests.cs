@@ -7,9 +7,15 @@ namespace Aoc2020.Tests
     public class Day14Tests
     {
         private readonly IDay _day;
-        private readonly List<string> _input;
+        private List<string> _input;
 
         public Day14Tests()
+        {
+            _day = new Day14();
+        }
+
+        [Fact]
+        public void Part1()
         {
             _input = new List<string>
             {
@@ -19,19 +25,21 @@ namespace Aoc2020.Tests
                 "mem[8] = 0",
             };
 
-            _day = new Day14();
-        }
-
-        [Fact]
-        public void Part1()
-        {
             _day.Solve1(_input).Should().Be(165);
         }
 
         [Fact]
         public void Part2()
         {
-            _day.Solve2(_input).Should().Be(1068781);
+            _input = new List<string>
+            {
+                "mask = 000000000000000000000000000000X1001X",
+                "mem[42] = 100",
+                "mask = 00000000000000000000000000000000X0XX",
+                "mem[26] = 1",
+            };
+
+            _day.Solve2(_input).Should().Be(208);
         }
     }
 }

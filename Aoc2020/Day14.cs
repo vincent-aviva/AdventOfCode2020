@@ -27,7 +27,7 @@ namespace Aoc2020
                 else
                 {
                     var position = int.Parse(commandParts[0].Substring(4, commandParts[0].Length - 5));
-                    var output = CalculateWithMask(int.Parse(commandParts[1]));
+                    var output = CalculateValueWithMask(int.Parse(commandParts[1]));
                     memory[position] = output;
                 }
             }
@@ -35,12 +35,7 @@ namespace Aoc2020
             return memory.Sum();
         }
 
-        public long Solve2(IList<string> input)
-        {
-            throw new NotImplementedException();
-        }
-
-        private long CalculateWithMask(long number)
+        private long CalculateValueWithMask(long number)
         {
             var array = new BitArray(BitConverter.GetBytes(number));
             for (int i = 0;i < Mask.Length;i++)
@@ -60,6 +55,39 @@ namespace Aoc2020
             var output = new byte[8];
             array.CopyTo(output, 0);
             return BitConverter.ToInt64(output, 0);
+        }
+
+        public long Solve2(IList<string> input)
+        {
+            var memory = new List<long>(Enumerable.Repeat((long)0, 100000));
+
+            foreach (var command in input)
+            {
+                var commandParts = command.Split(" = ");
+                if (commandParts[0].Equals("mask"))
+                {
+                    Mask = commandParts[1];
+                }
+                else
+                {
+                    var position = int.Parse(commandParts[0].Substring(4, commandParts[0].Length - 5));
+                    int[] indexes = CalculateIndexesWithMask(position);
+                    var value = int.Parse(commandParts[1]);
+
+                    foreach (var index in indexes)
+                    {
+                        memory[index] = value;
+                    }
+
+                }
+            }
+            return memory.Sum();
+        }
+
+        private int[] CalculateIndexesWithMask(int position)
+        {
+            //TODO
+            return new[] { };
         }
     }
 }
