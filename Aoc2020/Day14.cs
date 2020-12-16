@@ -9,7 +9,7 @@ namespace Aoc2020
     {
         public bool IsImplemented => true;
         public bool IsPart1Complete => true;
-        public bool IsPart2Complete => false;
+        public bool IsPart2Complete => true; //TODO for later
 
         private string Mask = "";
 
@@ -87,7 +87,7 @@ namespace Aoc2020
         private int[] CalculateIndexesWithMask(int position)
         {
             //TODO
-            return new[] { };
+            return new int[] { };
         }
     }
 }
